@@ -15,7 +15,7 @@ import models.Login;
 
 /*Servlet Login Controller*/
 
-@WebServlet("/ServletLogin")
+@WebServlet(urlPatterns = { "/principal/ServletLogin", "/ServletLogin" })
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +36,7 @@ public class ServletLogin extends HttpServlet {
 
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
+			String url = request.getParameter("url");
 
 			if (email != null && !email.isEmpty() && senha != null && !senha.isEmpty()) {
 
@@ -46,15 +47,20 @@ public class ServletLogin extends HttpServlet {
 
 				if (login.getEmail().equalsIgnoreCase("admin@gmail.com") && login.getSenha().equalsIgnoreCase("123")) {
 					
-					request.getSession().setAttribute("usuario", login);
+					request.getSession().setAttribute("usuario", login.getEmail());
 					
-					RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
+					if(url == null || url.equals("null")) {
+						
+						url = "principal/principal.jsp";
+					}
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 					dispatcher.forward(request, response);
 					
 
 				} else {
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
 					request.setAttribute("msg", "email e/ou Senha incorreto");
 					dispatcher.forward(request, response);
 				}
