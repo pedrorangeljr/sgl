@@ -15,7 +15,7 @@
 
 	<div align="center">
 
-		<form action="ServletsContatos" method="post">
+		<form action="" method="post">
 
 			<table border="1" cellpadding="5">
 
