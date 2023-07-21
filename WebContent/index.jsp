@@ -36,7 +36,7 @@
 
 			</table>
 			
-			<h4>Ainda não tem conta ? <a href=""> Cadastre-se</a></h4>
+			<h4>Ainda não tem conta ? <a href="cadastrarUsuario.jsp"> Cadastre-se</a></h4>
 
 		</form>
 
