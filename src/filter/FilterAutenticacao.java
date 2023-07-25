@@ -1,6 +1,8 @@
 package filter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,18 +15,30 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import conexao.SingleConnection;
+
 
 @WebFilter(urlPatterns = { "/principal/*" })
 public class FilterAutenticacao implements Filter {
+	
+	private static Connection connection;
 
     
     public FilterAutenticacao() {
        
     }
 
-	
+	/*Para a conexão quando projeto é fechado*/
 	public void destroy() {
 		
+		try {
+			
+			connection.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 	
@@ -54,7 +68,18 @@ public class FilterAutenticacao implements Filter {
 				chain.doFilter(request, response);
 			}
 			
+			connection.commit(); /*commit as altereções no banco de dados*/
+			
 		} catch (Exception e) {
+			
+			try {
+				
+				connection.rollback();
+				
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
 			
 			e.printStackTrace();
 			
@@ -65,8 +90,9 @@ public class FilterAutenticacao implements Filter {
 		
 	}
 
-	
+	/*Inicia a conexão quando o projeto é executado*/
 	public void init(FilterConfig fConfig) throws ServletException {
 		
+		connection = SingleConnection.getConnection();
 	}
 }
