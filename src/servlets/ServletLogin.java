@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.startup.SetAllPropertiesRule;
 
+import dao.DaoLogin;
 import models.Login;
 
 /*Servlet Login Controller*/
@@ -18,6 +19,8 @@ import models.Login;
 @WebServlet(urlPatterns = { "/principal/ServletLogin", "/ServletLogin" })
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private DaoLogin daoLogin = new DaoLogin();
 
 	public ServletLogin() {
 		super();
@@ -45,7 +48,7 @@ public class ServletLogin extends HttpServlet {
 				login.setEmail(email);
 				login.setSenha(senha);
 
-				if (login.getEmail().equalsIgnoreCase("admin@gmail.com") && login.getSenha().equalsIgnoreCase("admin@")) {
+				if (daoLogin.validarAutenticacao(login)) {
 					
 					request.getSession().setAttribute("usuario", login.getEmail());
 					
