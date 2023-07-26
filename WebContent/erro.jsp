@@ -8,7 +8,13 @@
 </head>
 <body>
 
- <h1>Tela de Erro</h1>
+ <h1>Mensagem de Erro, entre em contato com equipe de suporte</h1>
+ 
+ <%
+   
+   out.println(request.getAttribute("msg"));
+ 
+ %>
 
 </body>
 </html>
