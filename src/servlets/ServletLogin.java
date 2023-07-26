@@ -45,7 +45,7 @@ public class ServletLogin extends HttpServlet {
 				login.setEmail(email);
 				login.setSenha(senha);
 
-				if (login.getEmail().equalsIgnoreCase("admin@gmail.com") && login.getSenha().equalsIgnoreCase("123")) {
+				if (login.getEmail().equalsIgnoreCase("admin@gmail.com") && login.getSenha().equalsIgnoreCase("admin@")) {
 					
 					request.getSession().setAttribute("usuario", login.getEmail());
 					
