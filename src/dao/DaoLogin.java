@@ -73,4 +73,27 @@ public class DaoLogin {
 			e.printStackTrace();
 		}
 	}
+	
+	/*Metodo Não deixa gravar email duplicado*/
+	
+	public boolean ValidarEmail(String email) {
+		
+		try {
+			
+			String sql = "SELECT COUNT(1) AS quantidade FROM login WHERE email = '"+email+"'";
+			PreparedStatement consultar = connection.prepareStatement(sql);
+			ResultSet resultado = consultar.executeQuery();
+			
+			if(resultado.next()) {
+				
+				return resultado.getInt("quantidade") <= 0;
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

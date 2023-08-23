@@ -45,7 +45,14 @@ public class ServletCadastro extends HttpServlet {
 			login.setEmail(email);
 			login.setSenha(senha);
 			
-			if(id == null || id.isEmpty()) {
+			if (id == null || id.isEmpty() && !daoLogin.ValidarEmail(email)) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("cadastrarUsuario.jsp");				
+				request.setAttribute("msg", "Já existe usuário com esse email");
+				dispatcher.forward(request, response);
+				
+			}
+			else if(id == null || id.isEmpty()) {
 				
 				daoLogin.cadastrarUsuario(login);
 			}

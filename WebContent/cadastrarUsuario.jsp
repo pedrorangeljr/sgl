@@ -18,6 +18,8 @@
 		<form action="ServletCadastro" method="post">
 
 			<table border="1" cellpadding="5">
+			
+			<h4>${msg }</h4>
 
 				<tr>
 					<th>ID:</th>
