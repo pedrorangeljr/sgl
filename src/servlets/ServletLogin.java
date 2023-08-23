@@ -19,7 +19,7 @@ import models.Login;
 @WebServlet(urlPatterns = { "/principal/ServletLogin", "/ServletLogin" })
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private DaoLogin daoLogin = new DaoLogin();
 
 	public ServletLogin() {
@@ -37,6 +37,7 @@ public class ServletLogin extends HttpServlet {
 
 		try {
 
+			String id = request.getParameter("id");
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
 			String url = request.getParameter("url");
@@ -49,17 +50,16 @@ public class ServletLogin extends HttpServlet {
 				login.setSenha(senha);
 
 				if (daoLogin.validarAutenticacao(login)) {
-					
+
 					request.getSession().setAttribute("usuario", login.getEmail());
-					
-					if(url == null || url.equals("null")) {
-						
+
+					if (url == null || url.equals("null")) {
+
 						url = "principal/principal.jsp";
 					}
-					
+
 					RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 					dispatcher.forward(request, response);
-					
 
 				} else {
 
@@ -68,7 +68,9 @@ public class ServletLogin extends HttpServlet {
 					dispatcher.forward(request, response);
 				}
 
-			} else {
+			}
+
+			else {
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 				request.setAttribute("msg", "email e/ou Senha incorreto");
@@ -78,7 +80,7 @@ public class ServletLogin extends HttpServlet {
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
 			request.setAttribute("msg", e.getMessage());
 			dispatcher.forward(request, response);

@@ -15,7 +15,7 @@
 
 	<div align="center">
 
-		<form action="" method="post">
+		<form action="ServletCadastro" method="post">
 
 			<table border="1" cellpadding="5">
 

@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import conexao.SingleConnection;
 import models.Login;
@@ -41,5 +42,35 @@ public class DaoLogin {
 		}
 		
 		return false; // não autenticado.
+	}
+	
+	/*Metodo cadastrar usuário para logar no sistema*/
+	
+	public void cadastrarUsuario(Login login) {
+		
+		try {
+			
+			String sql = "INSERT INTO login(email,senha) VALUES(?,?)";
+			PreparedStatement insert = connection.prepareStatement(sql);
+			
+			insert.setString(1, login.getEmail());
+			insert.setString(2, login.getSenha());
+			insert.execute();
+			
+			connection.commit();
+			
+		} catch (Exception e) {
+			
+			try {
+				
+				connection.rollback();
+				
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+			e.printStackTrace();
+		}
 	}
 }
