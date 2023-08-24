@@ -13,7 +13,7 @@
 	<center>
 		<h1>Gerenciamentos de Livros</h1>
 		<h2>
-			<a href="adicionarContatos.jsp">Adicionar Livros</a> &nbsp;&nbsp;&nbsp;
+			<a href="adicionarLivros.jsp">Adicionar Livros</a> &nbsp;&nbsp;&nbsp;
 			<a href="relatorio.jsp">Imprimir Relatório</a> &nbsp;&nbsp;&nbsp;
 
 		</h2>
@@ -29,6 +29,7 @@
 				<th>Autor</th>
 				<th>Categoria</th>
 				<th>E-mail</th>
+				<th>Quantidade</th>
 				<th>Ações</th>
 			</tr>
 			<c:forEach items="${contatos}" var="contato">
@@ -36,6 +37,7 @@
 					<td><c:out value="${contato.id }"></c:out></td>
 					<td><c:out value="${contato.nome}"></c:out></td>
 					<td><c:out value="${contato.telefone}"></c:out></td>
+					<td><c:out value=""></c:out></td>
 					<td><c:out value=""></c:out></td>
 					<td><c:out value="${contato.email}"></c:out></td>
 					<td><a href="ServletsContatos?acao=editar&contato=${contato.id }" />Editar</a>
