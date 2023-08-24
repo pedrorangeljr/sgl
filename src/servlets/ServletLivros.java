@@ -32,6 +32,19 @@ public class ServletLivros extends HttpServlet {
 		
 		try {
 			
+			String id = request.getParameter("id");
+			String titulo = request.getParameter("titulo");
+			String autor = request.getParameter("autor");
+			String categoria = request.getParameter("categoria");
+			String email = request.getParameter("email");
+			int quantidade = Integer.parseInt("quantidade");
+			
+			System.out.println(titulo);
+			System.out.println(autor);
+			System.out.println(categoria);
+			System.out.println(email);
+			System.out.printf("%d%n", quantidade);
+			
 			
 		} catch (Exception e) {
 			
