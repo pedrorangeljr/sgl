@@ -31,7 +31,7 @@ public class DaoLivros {
 			insert.setString(2, livros.getAutor());
 			insert.setString(3, livros.getCategoria());
 			insert.setString(4, livros.getEmail());
-			insert.setInt(5, livros.getQuantidade());
+			insert.setString(5, livros.getQuantidade());
 			insert.execute();
 			
 			connection.commit();

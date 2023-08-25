@@ -7,7 +7,7 @@ public class Livros {
 	private String autor;
 	private String categoria;
 	private String email;
-	private int quantidade;
+	private String quantidade;
 
 	public Long getId() {
 		return id;
@@ -49,11 +49,11 @@ public class Livros {
 		this.email = email;
 	}
 
-	public int getQuantidade() {
+	public String getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(String quantidade) {
 		this.quantidade = quantidade;
 	}
 

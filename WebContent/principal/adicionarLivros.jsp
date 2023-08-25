@@ -19,7 +19,7 @@
 
 	<div align="center">
 
-		<form action="/ServletLivros" method="post">
+		<form action="<%= request.getContextPath() %>/ServletLivros" method="post">
 
 			<table border="1" cellpadding="5">
 				<caption>
@@ -54,7 +54,7 @@
 				</tr>
 					<tr>
 					<th>Quantidade:</th>
-					<td><input type="number" id="quantidade" name="quantidade" size="45"
+					<td><input type="text" id="quantidade" name="quantidade" size="45"
 						value="" /></td>
 				</tr>
 				<tr>
