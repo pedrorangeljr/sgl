@@ -52,6 +52,7 @@ public class ServletLivros extends HttpServlet {
 			String id = request.getParameter("id");
 			String titulo = request.getParameter("titulo");
 			String autor = request.getParameter("autor");
+			String editora = request.getParameter("editora");
 			String categoria = request.getParameter("categoria");
 			String email = request.getParameter("email");
 			String quantidade = request.getParameter("quantidade");
@@ -61,6 +62,7 @@ public class ServletLivros extends HttpServlet {
 			livro.setId(!id.isEmpty() ? Long.parseLong(id) : 0);
 			livro.setTitulo(titulo);
 			livro.setAutor(autor);
+			livro.setEditora(editora);
 			livro.setCategoria(categoria);
 			livro.setEmail(email);
 			livro.setCategoria(categoria);

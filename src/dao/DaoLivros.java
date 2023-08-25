@@ -27,7 +27,7 @@ public class DaoLivros {
 		
 		try {
 			
-			String sql = "INSERT INTO livros(titulo,autor,categoria,email,quantidade)VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO livros(titulo,autor,categoria,email,quantidade,editora)VALUES(?,?,?,?,?,?)";
 			PreparedStatement insert = connection.prepareStatement(sql);
 			
 			insert.setString(1, livros.getTitulo());
@@ -35,6 +35,7 @@ public class DaoLivros {
 			insert.setString(3, livros.getCategoria());
 			insert.setString(4, livros.getEmail());
 			insert.setString(5, livros.getQuantidade());
+			insert.setString(6, livros.getEditora());
 			insert.execute();
 			
 			connection.commit();
@@ -60,7 +61,7 @@ public class DaoLivros {
 		
 		List<Livros> listar = new ArrayList<Livros>();
 		
-		String sql = "SELECT * FROM livros";
+		String sql = "select * from livros";
 		PreparedStatement select = connection.prepareStatement(sql);
 		ResultSet resultado = select.executeQuery();
 		
@@ -71,6 +72,7 @@ public class DaoLivros {
 			livro.setId(resultado.getLong("id"));
 			livro.setTitulo(resultado.getString("Titulo"));
 			livro.setAutor(resultado.getString("autor"));
+			livro.setEditora(resultado.getString("editora"));
 			livro.setCategoria(resultado.getString("categoria"));
 			livro.setEmail(resultado.getString("email"));
 			livro.setQuantidade(resultado.getString("quantidade"));

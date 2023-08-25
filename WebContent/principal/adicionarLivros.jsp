@@ -43,6 +43,11 @@
 						value="" /></td>
 				</tr>
 					<tr>
+					<th>Editora:</th>
+					<td><input type="text" id="editora" name="editora" size="45"
+						value="" /></td>
+				</tr>
+					<tr>
 					<th>Categotia:</th>
 					<td><input type="text" id="categoria" name="categoria" size="45"
 						value="" /></td>

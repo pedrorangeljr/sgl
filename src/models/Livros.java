@@ -5,6 +5,7 @@ public class Livros {
 	private Long id;
 	private String titulo;
 	private String autor;
+	private String editora;
 	private String categoria;
 	private String email;
 	private String quantidade;
@@ -55,6 +56,14 @@ public class Livros {
 
 	public void setQuantidade(String quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getEditora() {
+		return editora;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
 	}
 
 }
