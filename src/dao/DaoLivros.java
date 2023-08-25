@@ -2,7 +2,10 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import conexao.SingleConnection;
 import models.Livros;
@@ -49,5 +52,32 @@ public class DaoLivros {
 			
 			e.printStackTrace();
 		}
+	}
+	
+	/*Metodo Listar todos*/
+	
+	public List<Livros> listar() throws Exception{
+		
+		List<Livros> listar = new ArrayList<Livros>();
+		
+		String sql = "SELECT * FROM livros";
+		PreparedStatement select = connection.prepareStatement(sql);
+		ResultSet resultado = select.executeQuery();
+		
+		while(resultado.next()) {
+			
+			Livros livro = new Livros();
+			
+			livro.setId(resultado.getLong("id"));
+			livro.setTitulo(resultado.getString("Titulo"));
+			livro.setAutor(resultado.getString("autor"));
+			livro.setCategoria(resultado.getString("categoria"));
+			livro.setEmail(resultado.getString("email"));
+			livro.setQuantidade(resultado.getString("quantidade"));
+			
+			listar.add(livro);
+		}
+		
+		return listar;
 	}
 }

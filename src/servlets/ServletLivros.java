@@ -25,6 +25,22 @@ public class ServletLivros extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		try {
+			
+			String acao = request.getParameter("acao");
+			
+			if(acao.equalsIgnoreCase("listarTodos")) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
+				request.setAttribute("livros",daoLivros.listar());
+				dispatcher.forward(request, response);
+			}
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 
 	}
 
@@ -56,10 +72,12 @@ public class ServletLivros extends HttpServlet {
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
+			request.setAttribute("livros", daoLivros.listar());
 			dispatcher.forward(request, response);
 
 		} catch (Exception e) {
 
+			e.printStackTrace();
 		}
 	}
 
