@@ -29,8 +29,18 @@ public class ServletLivros extends HttpServlet {
 		try {
 			
 			String acao = request.getParameter("acao");
+			String livro = request.getParameter("livro");
 			
-			if(acao.equalsIgnoreCase("listarTodos")) {
+			if(acao.equalsIgnoreCase("delete")) {
+				
+				daoLivros.deletar(livro);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
+				request.setAttribute("livros",daoLivros.listar());
+				dispatcher.forward(request, response);
+			}
+			
+			else if(acao.equalsIgnoreCase("listarTodos")) {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
 				request.setAttribute("livros",daoLivros.listar());

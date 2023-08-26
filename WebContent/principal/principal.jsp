@@ -45,7 +45,7 @@
 					<td><c:out value="${livro.quantidade }"></c:out></td>
 					<td><a href="" />Editar</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href=""
+						href="ServletLivros?acao=delete&livro=${livro.id }"
 						onclick="return confirm('Tem certeza que deseja excluir ?')">Excluir</a></td>
 				</tr>
 			</c:forEach>

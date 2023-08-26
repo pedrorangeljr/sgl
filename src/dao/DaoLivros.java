@@ -82,4 +82,31 @@ public class DaoLivros {
 		
 		return listar;
 	}
+	
+	/*Metodo delete*/
+	
+	public void deletar(String id) {
+		
+		try {
+			
+			String sql = "DELETE FROM livros WHERE id = '"+id+"'";
+			PreparedStatement delete = connection.prepareStatement(sql);
+			delete.execute();
+			
+			connection.commit();
+			
+		} catch (Exception e) {
+			
+			try {
+				
+				connection.rollback();
+				
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+			e.printStackTrace();
+		}
+	}
 }
