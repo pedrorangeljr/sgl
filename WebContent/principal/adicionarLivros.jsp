@@ -11,7 +11,7 @@
 <center>
 		<h1>Gerenciamento de Livros</h1>
 		<h2>
-			&nbsp;&nbsp;&nbsp; <a href="principal.jsp">Lista
+			&nbsp;&nbsp;&nbsp; <a href="principal/principal.jsp">Lista
 				Livros</a>
 
 		</h2>

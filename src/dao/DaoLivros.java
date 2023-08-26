@@ -61,7 +61,7 @@ public class DaoLivros {
 		
 		List<Livros> listar = new ArrayList<Livros>();
 		
-		String sql = "select * from livros";
+		String sql = "select * from livros ORDER BY id ASC";
 		PreparedStatement select = connection.prepareStatement(sql);
 		ResultSet resultado = select.executeQuery();
 		
