@@ -136,4 +136,38 @@ public class DaoLivros {
 		
 		return null;
 	}
+	
+	/*Metodo de Update*/
+	
+	public void atualizar(Livros livro) {
+		
+		try {
+			
+			String sql = "UPDATE livros SET titulo = ?, autor = ?, editora = ?, categoria = ?, email = ?, quantidade = ? WHERE id = " + livro.getId();
+			PreparedStatement update = connection.prepareStatement(sql);
+			
+			update.setString(1, livro.getTitulo());
+			update.setString(2, livro.getAutor());
+			update.setString(3, livro.getEditora());
+			update.setString(4, livro.getCategoria());
+			update.setString(5, livro.getEmail());
+			update.setString(6, livro.getQuantidade());
+			update.executeUpdate();
+			
+			connection.commit();
+			
+		} catch (Exception e) {
+			
+			try {
+				
+				connection.rollback();
+				
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+			
+			e.printStackTrace();
+		}
+	}
 }

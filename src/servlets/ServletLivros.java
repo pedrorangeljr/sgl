@@ -87,9 +87,15 @@ public class ServletLivros extends HttpServlet {
 			livro.setCategoria(categoria);
 			livro.setQuantidade(quantidade);
 			
+			
+			
 			if(id == null || id.isEmpty()) {
 				
 				daoLivros.salvarLivros(livro);
+			}
+			else if(id !=  null && !id.isEmpty()) {
+				
+				daoLivros.atualizar(livro);
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");
