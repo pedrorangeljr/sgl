@@ -40,6 +40,15 @@ public class ServletLivros extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			
+			else if(acao.equalsIgnoreCase("editar")) {
+				
+				Livros livros = daoLivros.consultar(livro);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("principal/adicionarLivros.jsp");
+				request.setAttribute("livros", livros);
+				dispatcher.forward(request, response);
+			}
+			
 			else if(acao.equalsIgnoreCase("listarTodos")) {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("principal/principal.jsp");

@@ -43,7 +43,7 @@
 					<td><c:out value="${livro.categoria }"></c:out></td>
 					<td><c:out value="${livro.email }"></c:out></td>
 					<td><c:out value="${livro.quantidade }"></c:out></td>
-					<td><a href="" />Editar</a>
+					<td><a href="ServletLivros?acao=editar&livro=${livro.id }" />Editar</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
 						href="ServletLivros?acao=delete&livro=${livro.id }"
 						onclick="return confirm('Tem certeza que deseja excluir ?')">Excluir</a></td>

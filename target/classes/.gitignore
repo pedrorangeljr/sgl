@@ -1,6 +1,2 @@
-/conexao/
-/dao/
-/filter/
-/models/
 /servlets/
-/sql_banco/
+/dao/

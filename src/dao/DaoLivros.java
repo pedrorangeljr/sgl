@@ -109,4 +109,31 @@ public class DaoLivros {
 			e.printStackTrace();
 		}
 	}
+	
+	/*Metodo listar por id*/
+	
+	public Livros consultar(String id) throws Exception {
+		
+		String sql = "SELECT * FROM livros WHERE id = '"+id+"'";
+		PreparedStatement consultar = connection.prepareStatement(sql);
+		ResultSet resultado = consultar.executeQuery();
+		
+		if(resultado.next()) {
+			
+			Livros livro = new Livros();
+			
+			livro.setId(resultado.getLong("id"));
+			livro.setTitulo(resultado.getString("Titulo"));
+			livro.setAutor(resultado.getString("autor"));
+			livro.setEditora(resultado.getString("editora"));
+			livro.setCategoria(resultado.getString("categoria"));
+			livro.setEmail(resultado.getString("email"));
+			livro.setQuantidade(resultado.getString("quantidade"));
+			
+			return livro;
+			
+		}
+		
+		return null;
+	}
 }
